@@ -1,0 +1,3 @@
+usr/include/KF6/KService/
+usr/lib/*/cmake/KF6Service/
+usr/lib/*/libKF6Service.so
