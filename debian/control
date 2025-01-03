@@ -1,15 +1,81 @@
-Source: template-repository
-Section: unknown
+Source: kf6-kservice
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.16~),
+               debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               doxygen,
+               extra-cmake-modules (>= 6.8.0~),
+               libkf6config-dev (>= 6.8.0~),
+               libkf6coreaddons-dev (>= 6.8.0~),
+               libkf6doctools-dev (>= 6.8.0~),
+               libkf6i18n-dev (>= 6.8.0~),
+               qt6-base-dev (>= 6.5.0+dfsg~),
+               qt6-tools-dev (>= 6.5.0~),
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/kservice
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-kservice
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-kservice.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libkf6service-bin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: Advanced plugin and service introspection
+ Application framework for file type association
+ and plugin locating.
+ .
+ This package contains kbuildsycoca6.
+
+Package: libkf6service-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: Advanced plugin and service introspection
+ Application framework for file type association
+ and plugin locating.
+ .
+ This package contains shared data files.
+
+Package: libkf6service-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libkf6config-dev (>= 6.8.0~),
+         libkf6coreaddons-dev (>= 6.8.0~),
+         libkf6doctools-dev (>= 6.8.0~),
+         libkf6i18n-dev (>= 6.8.0~),
+         libkf6service6 (= ${binary:Version}),
+         ${misc:Depends},
+Recommends: libkf6service-doc (= ${source:Version}),
+Description: development files for kservice
+ Application framework for file type association
+ and plugin locating.
+ .
+ Contains development files for kservice.
+
+Package: libkf6service-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: Advanced plugin and service introspection (documentation)
+ Application framework for file type association
+ and plugin locating.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6service6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6service-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6service-bin (= ${binary:Version}),
+Description: Advanced plugin and service introspection
+ Application framework for file type association
+ and plugin locating.
